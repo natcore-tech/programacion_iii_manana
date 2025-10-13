@@ -3,112 +3,91 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ejemplo de Layout y Grid — HTML5</title>
+  <title>Taller Mecánico — Ejemplo de Layout y Grid HTML5</title>
 </head>
 <body>
   <header>
-    <h1>Ejemplo de Layout y Grid en HTML5</h1>
-    <p>Diseño estructural adaptable — sin CSS (solo HTML)</p>
+    <h1>Taller Mecánico "El Motor"</h1>
+    <p>Servicios de reparación y mantenimiento automotriz — sin CSS (solo HTML)</p>
   </header>
   <nav>
     <ul>
       <li><a href="#inicio">Inicio</a></li>
-      <li><a href="#flex">Sección Flexbox</a></li>
-      <li><a href="#grid">Sección Grid</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#equipo">Nuestro Equipo</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
   </nav>
 
-
   <main id="inicio">
-    <section id="flex">
-      <h2>Diseño tipo Flexbox</h2>
+    <section id="servicios">
+      <h2>Servicios del Taller</h2>
       <p>
-        Este bloque representa un layout que luego puede adaptarse con Flexbox.
-        Su estructura contiene una zona principal de 
-        contenido y un <em>aside</em> lateral.
+        Ofrecemos una variedad de servicios para tu vehículo, desde mantenimiento preventivo hasta reparaciones complejas.
+        Nuestra zona principal de atención y una <em>zona de espera</em> para clientes.
       </p>
 
-
       <article>
-        <h3>Contenido principal</h3>
+        <h3>Zona de Atención</h3>
         <p>
-          Aquí iría el contenido principal, que con CSS Flexbox podrá ocupar 
-          más espacio horizontal,
-          mientras el <code>&lt;aside&gt;</code> se alineará al lado derecho.
+          Aquí nuestros mecánicos realizan diagnósticos, cambios de aceite, reparación de frenos, alineación y balanceo, entre otros servicios.
         </p>
       </article>
 
-
       <aside>
-        <h3>Aside o barra lateral</h3>
+        <h3>Zona de Espera</h3>
         <p>
-          Contenido adicional, enlaces o anuncios. En pantallas pequeñas 
-          se ubicará debajo del artículo.
+          Espacio cómodo para clientes, con café y revistas mientras esperan la entrega de su vehículo.
         </p>
       </aside>
-      <p><a href="#grid">Ir a la sección Grid ↓</a></p>
+      <p><a href="#equipo">Ir a Nuestro Equipo ↓</a></p>
     </section>
-
 
     <hr>
 
-
-    <section id="grid">
-      <h2>Diseño tipo Grid</h2>
+    <section id="equipo">
+      <h2>Nuestro Equipo</h2>
       <p>
-        Este ejemplo muestra cómo estructurar un contenedor que más adelante 
-        se dividirá en áreas de cuadrícula.
+        Conoce a los profesionales que cuidan tu auto. El equipo está formado por expertos en mecánica automotriz y atención al cliente.
       </p>
-
 
       <div class="grid-container">
         <header>
-          <h3>Encabezado del Grid</h3>
+          <h3>Encabezado del Equipo</h3>
         </header>
-
 
         <nav>
           <ul>
             <li><a href="#inicio">Inicio</a></li>
-            <li><a href="#flex">Flexbox</a></li>
+            <li><a href="#servicios">Servicios</a></li>
             <li><a href="#contacto">Contacto</a></li>
           </ul>
         </nav>
 
-
         <main>
-          <h3>Contenido Principal</h3>
+          <h3>Mecánicos y Personal</h3>
           <p>
-            Esta área sería la sección central de la cuadrícula.
-            Con CSS Grid, podría ocupar varias columnas.
+            Juan Pérez (Jefe de taller), Ana Gómez (Especialista en motores), Carlos Ruiz (Atención al cliente).
           </p>
         </main>
 
-
         <aside>
-          <h3>Aside del Grid</h3>
-          <p>Zona lateral o secundaria dentro del diseño Grid.</p>
+          <h3>Experiencia</h3>
+          <p>Más de 15 años brindando soluciones confiables y rápidas para tu vehículo.</p>
         </aside>
 
-
         <footer>
-          <p>Pie de página del Grid © 2025</p>
+          <p>Taller Mecánico "El Motor" © 2025</p>
         </footer>
       </div>
-
 
       <p><a href="#inicio">↑ Volver al inicio</a></p>
     </section>
   </main>
 
-
-  <footer id="contacto">
-    <p>Contacto: <a href="mailto:info@ejemplo.com">info@ejemplo.com</a></p>
+  <footer id="contacto"></footer>
+    <p>Contacto: <a href="mailto:tallerelmotor@ejemplo.com">tallerelmotor@ejemplo.com</a> | Tel: 555-1234</p>
   </footer>
-
-
 </body>
 </html>
-
 
