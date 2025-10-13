@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<head>
+</head>
+<body>
+<p>Formulario de solicitud de importacion de pieza especial de vehiculo</p>
+<form action="procesar.php" method="post">
+    <table border="0">
+        <tr>
+            <th>
+                <label for="nombre">Nombre del cliente:</label>
+                <input type="text" id="nombre" name="nombre" required>
+            </th>
+            <th>
+                <label for="correo">Correo electronico:</label>
+                <input type="email" id="correo" name="correo" required>
+            </th>
+        </tr>
+        <tr>
+            <td>
+                <label for="telefono">Telefono:</label>
+                <input type="tel" id="telefono" name="telefono" required>
+            </td>
+            <td>
+                <label for="vehiculo">Marca y modelo del vehiculo:</label>
+                <input type="text" id="vehiculo" name="vehiculo" required>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="anio">Anio del vehiculo:</label>
+                <input type="number" id="anio" name="anio" min="1900" max="2099" required>
+            </td>
+            <td>
+                <label for="pieza">Nombre o descripcion de la pieza:</label>
+                <input type="text" id="pieza" name="pieza" required>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="cantidad">Cantidad:</label>
+                <input type="number" id="cantidad" name="cantidad" min="1" required>
+            </td>
+            <td>
+                <label for="pais_origen">Pais de origen de la pieza:</label>
+                <select id="pais_origen" name="pais_origen" required>
+                    <option value="">Seleccione</option>
+                    <option value="US">Estados Unidos</option>
+                    <option value="JP">Japon</option>
+                    <option value="DE">Alemania</option>
+                    <option value="CN">China</option>
+                    <option value="KR">Corea del Sur</option>
+                    <option value="FR">Francia</option>
+                    <option value="IT">Italia</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="comentarios">Comentarios adicionales:</label>
+                <textarea id="comentarios" name="comentarios" rows="5"></textarea>
+            </td>
+            <td>
+                <input type="checkbox" id="acepto" name="acepto" required>
+                <label for="acepto">Acepto los terminos y condiciones</label>
+            </td>
+        </tr>
+            
+        </table> 
+        <input type="submit" value="Enviar">
+        <input type="reset" value="Limpiar">
+    </form>
+
+</body> 
+</html>
