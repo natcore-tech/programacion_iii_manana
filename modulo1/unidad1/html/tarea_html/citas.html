@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cita de Servicio</title>
+</head>
+<body>
+    <header>
+        <h1>Cita de Servicio - Taller Mecánico Nocturna</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="servicios.html">Servicios</a></li>
+            <li><a href="promociones.html">Promociones</a></li>
+            <li><a href="citas.html">Citas</a></li>
+            <li><a href="informacion.html">Información</a></li>
+        </ul>
+    </nav>
+    <hr>
+    <main>
+        <section>
+            <h2>Formulario de cita</h2>
+            <p>Por favor completa la siguiente información para agendar tu cita en <strong>Taller Mecánico Nocturna</strong>.</p>
+
+            <form action="procesar.php" method="post">
+                <fieldset>
+                    <legend>Datos del cliente</legend>
+
+                    <label for="nombre">Nombre completo:</label><br>
+                    <input type="text" id="nombre" name="nombre" required><br><br>
+
+                    <label for="correo">Correo electrónico:</label><br>
+                    <input type="email" id="correo" name="correo" required><br><br>
+
+                    <label for="fecha">Fecha de cita:</label><br>
+                    <input type="date" id="fecha" name="fecha" required><br><br>
+
+                    <label for="vehiculo">Tipo de vehículo:</label><br>
+                    <input type="text" id="vehiculo" name="vehiculo" required><br><br>
+
+                    <label for="servicio">Servicio requerido:</label><br>
+                    <select id="servicio" name="servicio" required>
+                        <option value="">Seleccione...</option>
+                        <option value="mantenimiento">Mantenimiento</option>
+                        <option value="reparacion">Reparación</option>
+                        <option value="diagnostico">Diagnóstico</option>
+                    </select><br><br>
+
+                    <label for="comentarios">Comentarios:</label><br>
+                    <textarea id="comentarios" name="comentarios" rows="4" cols="40"></textarea><br><br>
+                    <label for="acepto">Acepto los <a href="docs/terminos_condiciones.pdf" target="_blank" rel="noopener">
+                    términos y condiciones</a></label> 
+                    <input type="checkbox" id="acepto" name="acepto" required>
+                    <br><br>
+                    <button type="submit">Enviar</button>
+                    <button type="reset">Limpiar</button>
+                </fieldset>
+            </form>
+        </section>
+        <article>
+            <h3>Recuerda:</h3>
+            <p><em>Agenda tu cita con al menos 12 horas de anticipación para asegurar tu atención.</em></p>
+        </article>
+    </main>
+    <p><a href="citas.html">↑ Volver al inicio</a></p>
+    <footer>
+        <hr>
+        <p>
+            Gracias por confiar en nosotros
+            <br>
+            &copy; 2025 - Taller Mecánico Nocturna
+        </p>
+    </footer>
+
+</body>
+</html>
