@@ -1,0 +1,23 @@
+.fondo {
+    color: whitesmoke;
+    background-image: url(fondo.jpg);
+    background-size: cover;
+    background-position: center;
+    padding: 40px;
+    opacity: 0.9;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.ryosuke {
+    color: whitesmoke;
+    background-image: url(ryosuke.jpg);
+    background-size: cover;
+    background-position: center;
+    padding: 200px;
+    opacity: 1.5;
+    text-align: center;
+    font-size: 80px;
+    font-weight: bold;
+}

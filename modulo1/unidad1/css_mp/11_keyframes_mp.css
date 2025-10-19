@@ -1,0 +1,15 @@
+@keyframes mover {
+    0% { transform: translateX(0); background-color: blueviolet; }
+    50% { transform: translateX(200px); background-color: lightslategray; }
+    100% { transform: translateX(0); background-color: blueviolet; }
+}
+
+.caja {
+    width: 150px;
+    height: 150px;
+    animation: mover 5s infinite ease-in-out;
+    display: flex;
+    justify-content: center;
+    color: black;
+    border-radius: 8px;
+}
