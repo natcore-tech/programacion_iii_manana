@@ -5,6 +5,8 @@ import { User } from './user.entity';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import * as bcrypt from 'bcrypt';
+import { Category } from 'src/categories/category.entity';
+import { IPaginationOptions, paginate, Pagination } from 'nestjs-typeorm-paginate';
 
 @Injectable()
 export class UsersService {
@@ -22,9 +24,10 @@ export class UsersService {
     return this.userRepository.save(user);
   }
 
-  findAll() {
-    return this.userRepository.find();
-  }
+  async findAll(options: IPaginationOptions): Promise<Pagination<User>> {
+      const queryBuilder = this.userRepository.createQueryBuilder('user');
+      return paginate<User>(queryBuilder, options);
+    }
 
   findOne(id: string) {
     return this.userRepository.findOne({ where: { id } });
