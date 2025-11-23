@@ -74,8 +74,8 @@ if (a>b){
 console.log("El numero mayor es:",mayor);
 
 let a1=prompt("Incluye el primer numero");
-let b1=input("Incluye el segundo numero");
-let c1=input("Incluye el tercer numero");
+let b1=prompt("Incluye el segundo numero");
+let c1=prompt("Incluye el tercer numero");
 mayor=0;
 if (a>b){
     mayor=a;

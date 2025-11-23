@@ -1,8 +1,8 @@
 const caja = document.getElementById('caja')
 
 caja.addEventListener('mouseover', () => {
-    caja.style.background = 'yellow';
-    console.log('Taller Mecánico Nocturna — Zona de trabajo iluminada (amarillo): inspección de motor en curso.');
+    caja.style.background = 'blueviolet';
+    console.log('Taller Mecánico Nocturna — Zona de trabajo iluminada (violeta): inspección de motor en curso.');
 });
 caja.addEventListener('mouseout', () => {
     caja.style.background = 'gray';
