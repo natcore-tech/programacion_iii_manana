@@ -16,13 +16,27 @@ export class CategoriesController {
     return this.categoriesService.create(createCategoryDto);
   }
 
-   @Get()
+  @Get()
   findAll(
     @Query('page') page = 1,
     @Query('limit') limit = 10,
+    @Query('search') search?: string,
+    @Query('searchField') searchField = 'name',
+    @Query('sortBy') sortBy = 'id',
+    @Query('sortOrder') sortOrder: 'ASC' | 'DESC' = 'ASC',
   ): Promise<Pagination<Category>> {
+    limit = Number(limit);
+    page = Number(page);
     limit = limit > 100 ? 100 : limit;
-    return this.categoriesService.findAll({ page, limit });
+
+    return this.categoriesService.findAll({
+      page,
+      limit,
+      search,
+      searchField,
+      sortBy,
+      sortOrder,
+    });
   }
 
   @Get(':id')
