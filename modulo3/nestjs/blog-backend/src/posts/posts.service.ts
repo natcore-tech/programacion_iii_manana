@@ -8,6 +8,13 @@ import { Category } from '../categories/category.entity';
 import { paginate } from 'nestjs-typeorm-paginate/dist/paginate';
 import { IPaginationOptions, Pagination } from 'nestjs-typeorm-paginate';
 
+interface PostPaginationOptions extends IPaginationOptions {
+  search?: string;
+  searchField?: string;
+  sortBy?: string;
+  sortOrder?: 'ASC' | 'DESC';
+}
+
 @Injectable()
 export class PostsService {
   constructor(
@@ -30,11 +37,33 @@ export class PostsService {
     return this.postRepository.save(post);
   }
 
-  async findAll(options: IPaginationOptions): Promise<Pagination<Post>> {
-        const queryBuilder = this.postRepository.createQueryBuilder('post');
-        queryBuilder.leftJoinAndSelect('post.category', 'category');
-        return paginate<Post>(queryBuilder, options);
-      }
+  async findAll(options: PostPaginationOptions): Promise<Pagination<Post>> {
+    const { search, searchField, sortBy, sortOrder } = options;
+
+    const queryBuilder = this.postRepository.createQueryBuilder('post');
+    queryBuilder.leftJoinAndSelect('post.category', 'category');
+
+    const allowedSearchFields = ['title', 'content'];
+    const allowedSortFields = ['id', 'title'];
+
+    if (search && searchField && allowedSearchFields.includes(searchField)) {
+      queryBuilder.andWhere(
+        `LOWER(post.${searchField}) LIKE :search`,
+        { search: `%${search.toLowerCase()}%` },
+      );
+    }
+
+    const orderField = sortBy && allowedSortFields.includes(sortBy) ? sortBy : 'id';
+    const orderDirection: 'ASC' | 'DESC' =
+      sortOrder === 'DESC' ? 'DESC' : 'ASC';
+
+    queryBuilder.orderBy(`post.${orderField}`, orderDirection);
+
+    return paginate<Post>(queryBuilder, {
+      page: options.page,
+      limit: options.limit,
+    });
+  }
 
   findOne(id: string) {
     return this.postRepository.findOne({ where: { id }, relations: ['category'] });

@@ -17,13 +17,27 @@ export class PostsController {
   }
 
   @Get()
-      findAll(
-        @Query('page') page = 1,
-        @Query('limit') limit = 10,
-      ): Promise<Pagination<Post>> {
-        limit = limit > 100 ? 100 : limit;
-        return this.postsService.findAll({ page, limit });
-      }
+  findAll(
+    @Query('page') page = 1,
+    @Query('limit') limit = 10,
+    @Query('search') search?: string,
+    @Query('searchField') searchField = 'title',
+    @Query('sortBy') sortBy = 'id',
+    @Query('sortOrder') sortOrder: 'ASC' | 'DESC' = 'ASC',
+  ): Promise<Pagination<Post>> {
+    limit = Number(limit);
+    page = Number(page);
+    limit = limit > 100 ? 100 : limit;
+
+    return this.postsService.findAll({
+      page,
+      limit,
+      search,
+      searchField,
+      sortBy,
+      sortOrder,
+    });
+  }
 
   @Get(':id')
   findOne(@Param('id') id: string) {

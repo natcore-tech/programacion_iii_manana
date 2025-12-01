@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Put, Delete, Body, Param, UseGuards, Query } from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Body, Param, UseGuards, Query, BadRequestException, UseInterceptors, UploadedFile, NotFoundException } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
@@ -6,40 +6,83 @@ import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 import { Category } from 'src/categories/category.entity';
 import { Pagination } from 'nestjs-typeorm-paginate';
 import { User } from './user.entity';
+import { SuccessResponseDto } from 'src/common/dto/response.dto';
+import { FileInterceptor } from '@nestjs/platform-express';
+import { diskStorage } from 'multer';
 
 @Controller('users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
   @Post()
-  @UseGuards(JwtAuthGuard)
-  create(@Body() createUserDto: CreateUserDto) {
-    return this.usersService.create(createUserDto);
+  async create(@Body() dto: CreateUserDto) {
+    const user = await this.usersService.create(dto);
+    return new SuccessResponseDto('User created successfully', user);
   }
 
   @Get()
-    findAll(
-      @Query('page') page = 1,
-      @Query('limit') limit = 10,
-    ): Promise<Pagination<User>> {
+  async findAll(
+    @Query('page') page = 1,
+    @Query('limit') limit = 10,
+    @Query('search') search?: string,
+    @Query('searchField') searchField = 'name',
+    @Query('sortBy') sortBy = 'id',
+    @Query('sortOrder') sortOrder: 'ASC' | 'DESC' = 'ASC',
+  ) {
+      limit = Number(limit);
+      page = Number(page);
       limit = limit > 100 ? 100 : limit;
-      return this.usersService.findAll({ page, limit });
-    }
+
+      const user = await this.usersService.findAll({
+        page,
+        limit,
+        search,
+        searchField,
+        sortBy,
+        sortOrder,
+      });
+
+      return new SuccessResponseDto('List Users Success', user);
+  }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.usersService.findOne(id);
+  async findOne(@Param('id') id: string) {
+    const user = await this.usersService.findOne(id);
+    if (!user) throw new NotFoundException('User not found');
+    return new SuccessResponseDto('User retrieved successfully', user);
   }
 
   @Put(':id')
-  @UseGuards(JwtAuthGuard)
-  update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
-    return this.usersService.update(id, updateUserDto);
+  async update(@Param('id') id: string, @Body() dto: UpdateUserDto) {
+    const user = await this.usersService.update(id, dto);
+    if (!user) throw new NotFoundException('User not found');
+    return new SuccessResponseDto('User updated successfully', user);
   }
 
   @Delete(':id')
-  @UseGuards(JwtAuthGuard)
-  remove(@Param('id') id: string) {
-    return this.usersService.remove(id);
+  async remove(@Param('id') id: string) {
+    const user = await this.usersService.remove(id);
+    if (!user) throw new NotFoundException('User not found');
+    return new SuccessResponseDto('User deleted successfully', user);
+  }
+
+  @Put(':id/profile')
+  @UseInterceptors(FileInterceptor('profile', {
+    storage: diskStorage({
+      destination: './public/profile',
+      filename: (req, file, cb) => cb(null, `${Date.now()}-${file.originalname}`)
+    }),
+    fileFilter: (req, file, cb) => {
+      if (!file.mimetype.match(/\/(jpg|jpeg|png)$/)) {
+        return cb(new BadRequestException('Only JPG or PNG files are allowed'), false);
+      }
+      cb(null, true);
+    }
+  }))
+  async uploadProfile(@Param('id') id: string, @UploadedFile() file: Express.Multer.File) {
+    if (!file) throw new BadRequestException('Profile image is required');
+    const user = await this.usersService.updateProfile(id, file.filename);
+    if (!user) throw new NotFoundException('User not found');
+    return new SuccessResponseDto('Profile image updated', user);
   }
 }

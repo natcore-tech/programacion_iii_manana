@@ -6,6 +6,12 @@ import { CreateCategoryDto } from './dto/create-category.dto';
 import { UpdateCategoryDto } from './dto/update-category.dto';
 import { paginate, IPaginationOptions, Pagination } from 'nestjs-typeorm-paginate';
 
+interface CategoryPaginationOptions extends IPaginationOptions {
+  search?: string;
+  searchField?: string;
+  sortBy?: string;
+  sortOrder?: 'ASC' | 'DESC';
+}
 
 @Injectable()
 export class CategoriesService {
@@ -37,9 +43,30 @@ export class CategoriesService {
     return this.categoryRepository.remove(category);
   }
 
-  async findAll(options: IPaginationOptions): Promise<Pagination<Category>> {
+  async findAll(options: CategoryPaginationOptions): Promise<Pagination<Category>> {
+    const { search, searchField, sortBy, sortOrder } = options;
+
     const queryBuilder = this.categoryRepository.createQueryBuilder('category');
-    return paginate<Category>(queryBuilder, options);
+    const allowedSearchFields = ['name'];
+    const allowedSortFields = ['id', 'name'];
+
+    if (search && searchField && allowedSearchFields.includes(searchField)) {
+      queryBuilder.andWhere(
+        `LOWER(category.${searchField}) LIKE :search`,
+        { search: `%${search.toLowerCase()}%` },
+      );
+    }
+
+    const orderField = sortBy && allowedSortFields.includes(sortBy) ? sortBy : 'id';
+    const orderDirection: 'ASC' | 'DESC' =
+      sortOrder === 'DESC' ? 'DESC' : 'ASC';
+
+    queryBuilder.orderBy(`category.${orderField}`, orderDirection);
+
+    return paginate<Category>(queryBuilder, {
+      page: options.page,
+      limit: options.limit,
+    });
   }
 }
 

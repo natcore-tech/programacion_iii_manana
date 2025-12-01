@@ -10,4 +10,10 @@ export class User {
 
   @Column()
   password: string;
+
+  @Column({ default: true })
+  isActive: boolean;
+
+  @Column({ nullable: true })
+  profile: string;
 }
