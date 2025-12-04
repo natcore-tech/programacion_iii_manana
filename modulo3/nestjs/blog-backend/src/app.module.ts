@@ -8,6 +8,7 @@ import { UsersModule } from './users/users.module';
 import { CategoriesModule } from './categories/categories.module';
 import { PostsModule } from './posts/posts.module';
 import { BasicsModule } from './basics/basics.module';
+import { MailModule } from './mail/mail.module';
 
 @Module({
   imports: [
@@ -20,7 +21,8 @@ import { BasicsModule } from './basics/basics.module';
       password: process.env.DB_PASS,
       database: process.env.DB_NAME,
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
-      synchronize: true,
+      synchronize: process.env.DB_SYNCHRONIZE === 'true'
+      //synchronize: true,
       //ssl: { rejectUnauthorized: false },
     }),
     AuthModule,
@@ -28,6 +30,7 @@ import { BasicsModule } from './basics/basics.module';
     UsersModule,
     CategoriesModule,
     PostsModule,
+    MailModule,
   ],
   controllers: [AppController],
   providers: [AppService],
