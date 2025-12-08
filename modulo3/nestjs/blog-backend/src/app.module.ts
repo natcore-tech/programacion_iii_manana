@@ -9,9 +9,12 @@ import { CategoriesModule } from './categories/categories.module';
 import { PostsModule } from './posts/posts.module';
 import { BasicsModule } from './basics/basics.module';
 import { MailModule } from './mail/mail.module';
+import { MongooseModule } from '@nestjs/mongoose';
+import { CursosModule } from './cursos/cursos.module';
 
 @Module({
   imports: [
+    MongooseModule.forRoot(process.env.MONGO_URI || ''),
     ConfigModule.forRoot({ isGlobal: true }),
     TypeOrmModule.forRoot({
       type: 'postgres',
@@ -31,6 +34,7 @@ import { MailModule } from './mail/mail.module';
     CategoriesModule,
     PostsModule,
     MailModule,
+    CursosModule,
   ],
   controllers: [AppController],
   providers: [AppService],
