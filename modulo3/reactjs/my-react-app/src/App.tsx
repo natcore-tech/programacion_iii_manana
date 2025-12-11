@@ -7,6 +7,14 @@ import ParentIncrementButton from './props/ParentIncrementButton';
 import ParentInputNotifier from './props/ParentInputNotifier';
 import ParentUserList from './props/ParentUserList';
 import ParentLoginForm from './props/ParentLoginForm';
+import HoverFont from './useState/HoverFont';
+import AccessWithLimit from './useState/AccessWithLimit';
+import LoginWithLimit from './useState/LoginWithLimit';
+import DocumentTitleChanger from './useState/DocumentTitleChanger';
+import PostLikes from './useState/PostLikes';
+import CheckboxSummary from './useState/CheckboxSummary';
+import LanguageSwitcher from './useState/LanguageSwitcher';
+import MultiSwitch from './useState/MultiSwitch';
 
 function App() {
 
@@ -22,6 +30,15 @@ const userData = { name: "Carlos", apellido: "Pérez", age: 30 , direccion: "Av.
       <ParentInputNotifier />
       <ParentUserList />
       <ParentLoginForm />
+      <HoverFont />
+      <AccessWithLimit />
+      <LoginWithLimit />
+      <DocumentTitleChanger />
+      <PostLikes />
+      <CheckboxSummary />
+      <LanguageSwitcher />
+      <MultiSwitch />
+      
     </>
   );
 }
