@@ -15,6 +15,10 @@ import PostLikes from './useState/PostLikes';
 import CheckboxSummary from './useState/CheckboxSummary';
 import LanguageSwitcher from './useState/LanguageSwitcher';
 import MultiSwitch from './useState/MultiSwitch';
+import DynamicColor from './useState/DynamicColor';
+import ClickHistory from './useState/ClickHistory';
+import LogEffect from './useEffect/logEffect';
+import FetchUser from './useEffect/FetchUser';
 
 function App() {
 
@@ -38,6 +42,10 @@ const userData = { name: "Carlos", apellido: "Pérez", age: 30 , direccion: "Av.
       <CheckboxSummary />
       <LanguageSwitcher />
       <MultiSwitch />
+      <DynamicColor />
+      <ClickHistory />
+      <LogEffect />
+      <FetchUser />
       
     </>
   );
