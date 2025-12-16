@@ -19,34 +19,42 @@ import DynamicColor from './useState/DynamicColor';
 import ClickHistory from './useState/ClickHistory';
 import LogEffect from './useEffect/logEffect';
 import FetchUser from './useEffect/FetchUser';
+import FocoAutomatico from "./useRef/FocoAutomatico.tsx";
+import CirculoColorido from "./useRef/CirculoColorido.tsx";
 
 function App() {
 
 const userData = { name: "Carlos", apellido: "Pérez", age: 30 , direccion: "Av. Occidental "};
   return (
     <>
-      <Greeting name="María" />
-      <HelloWorld />
-      <Promedio />
-      <UserCard user={userData} />
-      <ParentButtonOne />
-      <ParentIncrementButton />
-      <ParentInputNotifier />
-      <ParentUserList />
-      <ParentLoginForm />
-      <HoverFont />
-      <AccessWithLimit />
-      <LoginWithLimit />
-      <DocumentTitleChanger />
-      <PostLikes />
-      <CheckboxSummary />
-      <LanguageSwitcher />
-      <MultiSwitch />
-      <DynamicColor />
-      <ClickHistory />
-      <LogEffect />
-      <FetchUser />
-      
+        <Greeting name="María" />
+        <HelloWorld />
+        <Promedio />
+        <UserCard user={userData} />
+        <ParentButtonOne />
+        <ParentIncrementButton />
+        <ParentInputNotifier />
+        <ParentUserList />
+        <ParentLoginForm />
+        <HoverFont />
+        <AccessWithLimit />
+        <LoginWithLimit />
+        <DocumentTitleChanger />
+        <PostLikes />
+        <CheckboxSummary />
+        <LanguageSwitcher />
+        <MultiSwitch />
+        <DynamicColor />
+        <ClickHistory />
+        <LogEffect />
+        <FetchUser />
+        <FocoAutomatico />
+        <CirculoColorido />
+
+
+
+
+
     </>
   );
 }
