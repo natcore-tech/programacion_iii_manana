@@ -29,6 +29,7 @@ import ContadorLetras from "./useMemo/ContadorLetras.tsx";
 import Contador from "./useCallback/Contador.tsx";
 import Padre from "./useCallback/ReRender.tsx";
 import Saludo from "./useCallback/Saludo.tsx";
+import AreaTriangulo from "./useState/AreaTriangulo.tsx";
 
 function App() {
 
@@ -65,7 +66,7 @@ const userData = { name: "Carlos", apellido: "Pérez", age: 30 , direccion: "Av.
         <Contador/>
         <Padre/>
         <Saludo/>
-
+        <AreaTriangulo/>
 
 
 
