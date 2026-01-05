@@ -21,6 +21,14 @@ import LogEffect from './useEffect/logEffect';
 import FetchUser from './useEffect/FetchUser';
 import FocoAutomatico from "./useRef/FocoAutomatico.tsx";
 import CirculoColorido from "./useRef/CirculoColorido.tsx";
+import ExpensiveCalc from "./useMemo/ExpensiveCalc.tsx";
+import FiltroLista from "./useMemo/FiltroLista.tsx";
+import TablaOrdenada from "./useMemo/TablaOrdenada.tsx";
+import PrimosMemo from "./useMemo/PrimosMemo.tsx";
+import ContadorLetras from "./useMemo/ContadorLetras.tsx";
+import Contador from "./useCallback/Contador.tsx";
+import Padre from "./useCallback/ReRender.tsx";
+import Saludo from "./useCallback/Saludo.tsx";
 
 function App() {
 
@@ -49,7 +57,14 @@ const userData = { name: "Carlos", apellido: "Pérez", age: 30 , direccion: "Av.
         <LogEffect />
         <FetchUser />
         <FocoAutomatico />
-        <CirculoColorido />
+        <ExpensiveCalc/>
+        <FiltroLista/>
+        <TablaOrdenada/>
+        <PrimosMemo/>
+        <ContadorLetras/>
+        <Contador/>
+        <Padre/>
+        <Saludo/>
 
 
 
