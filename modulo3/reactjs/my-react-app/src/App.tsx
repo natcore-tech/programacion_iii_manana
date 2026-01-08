@@ -1,15 +1,10 @@
 
-
-import NewId from "./useId/useIdHook.tsx";
-import LoginCampos from "./useId/LoginCampos.tsx";
-import {BuscadorUseTransition} from "./useTransition/BuscadorUseTransition.tsx";
+import ListaPosts from "./fetch/ListaPosts.tsx";
 
 export default function App () {
   return (
     <>
-        <LoginCampos/>
-        <NewId/>
-        <BuscadorUseTransition/>
+        <ListaPosts/>
 
 
 
