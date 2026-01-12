@@ -1,0 +1,19 @@
+div p {
+    color: white;
+    background-color: purple;
+    text-align: center;
+}
+ul > li {
+    color: black;
+    background-color: white;
+    text-align: left;
+}
+a:hover{
+    color: gray;
+    text-decoration: underline;
+    
+}
+input[type="text"] {
+    border: 2px solid purple;
+    padding: 5px;
+}
